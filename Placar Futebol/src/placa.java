@@ -66,7 +66,7 @@ public class placa {
 		br = new ImageIcon(getClass().getResource("/img/br.jpg"));
 		
 		br.setImage(br.getImage().getScaledInstance(
-				brasil.getWidth(), brasil.getHeight(), Image.SCALE_DEFAULT));
+				brasil.getWidth(), brasil.getHeight(), 100));
 		
 		brasil.setIcon(br);
 		
@@ -77,7 +77,7 @@ public class placa {
 		arg = new ImageIcon(getClass().getResource("/img/arg.jpg"));
 		
 		arg.setImage(arg.getImage().getScaledInstance(
-				argentina.getWidth(), argentina.getHeight(), Image.SCALE_DEFAULT));
+				argentina.getWidth(), argentina.getHeight(), 100));
 		
 		argentina.setIcon(arg);
 		
