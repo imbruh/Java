@@ -119,10 +119,6 @@ public class placa {
 		btn2.setBounds(218, 122, 89, 23);
 		frmPlacarDeFutebol.getContentPane().add(btn2);
 		
-		if(contA == 5 || contB == 5) {
-			lblResult.setText("Alguem ganhou!");
-		}
-		
 		lbl1 = new JLabel("0");
 		lbl1.setBounds(364, 57, 23, 23);
 		frmPlacarDeFutebol.getContentPane().add(lbl1);
@@ -140,14 +136,9 @@ public class placa {
 				lbl2.setText("0");
 				btn1.setEnabled(true);
 				btn2.setEnabled(true);
-				lblResult.setText("");
 			}
 		});
 		btnReiniciar.setBounds(158, 200, 89, 23);
 		frmPlacarDeFutebol.getContentPane().add(btnReiniciar);
-		
-		lblResult = new JLabel("");
-		lblResult.setBounds(159, 168, 114, 14);
-		frmPlacarDeFutebol.getContentPane().add(lblResult);
 	}
 }
