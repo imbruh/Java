@@ -95,7 +95,7 @@ public class placa {
 				contB+=1;
 				lbl1.setText(Integer.toString(contB));
 				if(contB == 5) {
-					lblResult.setText("Brasil ganhou!!!");
+					JOptionPane.showMessageDialog(null, "Brasil ganhou!!!");
 					btn1.setEnabled(false);
 					btn2.setEnabled(false);
 				}
@@ -110,7 +110,7 @@ public class placa {
 				contA+=1;
 				lbl2.setText(Integer.toString(contA));
 				if(contA == 5) {
-					lblResult.setText("Argentina ganhou!!!");
+					JOptionPane.showMessageDialog(null, "Argentina ganhou!!!");
 					btn1.setEnabled(false);
 					btn2.setEnabled(false);
 				}
