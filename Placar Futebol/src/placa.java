@@ -24,7 +24,6 @@ public class placa {
 	JLabel lbl1;
 	JLabel lbl2;
 	private JButton btnReiniciar;
-	private JLabel lblResult;
 
 	/**
 	 * Launch the application.
