@@ -147,6 +147,10 @@ public class Repositorio {
 	public void apagarPedido(Pedido pedido) {
 		if(!pedido.isPago()) {
 			Cliente cliente = pedido.getCliente();
+			ArrayList<Produto> produtos = pedido.getProdutos();
+			for(Produto p: produtos) {
+				p.removePedido(pedido);
+			}
 			int index=pedidos.indexOf(pedido);
 			pedidos.remove(index);
 			cliente.removePedido(pedido);
