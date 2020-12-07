@@ -76,8 +76,16 @@ public class TelaCadastroCliente extends JFrame {
 					String fone = telefone.getText();
 					String n = nome.getText();
 					String end = endereco.getText();
-					Fachada.cadastrarCliente(fone, n, end);
-					lblMensagem.setText("Cadastro feito com sucesso!");
+					if(n.isEmpty() || end.isEmpty()) {
+						lblMensagem.setText("Campo vazio");
+					}
+					else if(fone.length()!=9) {
+						lblMensagem.setText("Numero invalido");
+					}
+					else {
+						Fachada.cadastrarCliente(fone, n, end);
+						lblMensagem.setText("Cadastro feito com sucesso!");
+					}					
 				}
 				catch(Exception erro){
 					lblMensagem.setText(erro.getMessage());			

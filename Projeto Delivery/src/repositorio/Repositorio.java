@@ -161,7 +161,7 @@ public class Repositorio {
 	public static double consultarArrecadacao(int dia) {
 		double sum = 0;
 		for(Pedido pe: pedidos) {
-			if(pe.getData().getDayOfMonth() == dia) {
+			if(pe.getData().getDayOfMonth() == dia && pe.isPago()) {
 				sum += pe.getValortotal();
 			}
 		}

@@ -113,7 +113,7 @@ public class Fachada {
 	public static void removerProdutoPedido(int idpedido, int idproduto) throws Exception {
         Pedido pedido = repositorio.localizarPedido(idpedido);
         if(pedido==null) {
-        	throw new Exception("Pedido " + idpedido + " inexistente");
+        	throw new Exception("Pedido inexistente");
         }     
         Produto produto = repositorio.localizarProduto(idproduto);
         if(produto==null) {

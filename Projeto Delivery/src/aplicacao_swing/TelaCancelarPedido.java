@@ -55,6 +55,8 @@ public class TelaCancelarPedido extends JFrame{
                     catch (Exception a) {
                         lblMensagem.setText("id invalido!");
                     }
+                    Fachada.cancelarPedido(idPed);
+                    lblMensagem.setText("Pedido cancelado!");
 				}
 				catch (Exception erro){
 					lblMensagem.setText(erro.getMessage());
