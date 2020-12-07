@@ -6,7 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -332,9 +334,11 @@ public class TelaPrincipal {
 				try {
 					String texto;
 					LocalDate hoje = LocalDate.now();
-					texto = "Arrecadação do dia: \n";
-					texto +="R$ ";					
-					texto += Fachada.consultarArrecadacao(hoje.getDayOfMonth());
+					texto = "Arrecadação do dia " + hoje.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + ":\n" ;
+					texto +="R$ ";	
+					DecimalFormat valor = new DecimalFormat("#.00");
+                    texto+=valor.format(Fachada.consultarArrecadacao(hoje.getDayOfMonth()));
+					//texto += Fachada.consultarArrecadacao(hoje.getDayOfMonth());
 					
 					TelaListagem listprod = new TelaListagem(texto);
 					listprod.setVisible(true);

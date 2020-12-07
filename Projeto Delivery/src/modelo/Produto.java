@@ -1,5 +1,6 @@
 package modelo;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Produto {
@@ -7,6 +8,7 @@ public class Produto {
 	private String nome;
 	private double preco;
 	private ArrayList<Pedido> pedidos = new ArrayList<>();
+	DecimalFormat valor = new DecimalFormat("#.00");
 	
 	public Produto(String nome, double preco) {
 		this.nome = nome;
@@ -59,7 +61,7 @@ public class Produto {
 
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", nome=" + nome + ", preco=" + preco + ", idpedido=" + getPedidos();
+		return "Produto [id=" + id + ", nome=" + nome + ", preco=" + valor.format(preco) + ", idpedido=" + getPedidos();
 	}
 	
 	

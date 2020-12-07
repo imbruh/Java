@@ -3,8 +3,8 @@ package modelo;
 public class PedidoExpress extends Pedido {
 	private double taxa;
 
-	public PedidoExpress(Cliente cliente, String entregador, double taxa) {
-		super(cliente, entregador);
+	public PedidoExpress(Cliente cliente,  double taxa) {
+		super(cliente);
 		this.taxa = taxa;
 	}
 	

@@ -1,5 +1,6 @@
 package modelo;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -12,12 +13,13 @@ public class Pedido {
 	private boolean pago;
 	private ArrayList<Produto> produtos = new ArrayList<>();
 	private Cliente cliente;
+	DecimalFormat valor = new DecimalFormat("#.00");
 	
-	public Pedido(Cliente cliente, String entregador) {
+	public Pedido(Cliente cliente) {
 		this.id = 0;
 		this.cliente = cliente;
 		this.pago = false;
-		this.entregador = entregador;
+		//this.entregador = entregador;
 	}
 
 	public int getId() {
@@ -112,7 +114,7 @@ public class Pedido {
 	
 	@Override
 	public String toString() {
-		return "Pedido [id=" + id + ", datahora=" + this.getDatahora() + ", valortotal=" + valortotal + ", entregador=" + entregador + ", pago=" + pago
+		return "Pedido [id=" + id + ", datahora=" + this.getDatahora() + ", valortotal=" + valor.format(valortotal) + ", entregador=" + entregador + ", pago=" + pago
 				+ ", produtos=" + getProdutosId() + ", cliente= " + getCliente().getTelefone() + ", " + getCliente().getNome() + ", " + getCliente().getEndereco() + "]" ;
 	}
 		

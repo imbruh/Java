@@ -1,5 +1,7 @@
 package aplicacao_console;
 
+import java.time.LocalDate;
+
 import fachada.Fachada;
 import modelo.Cliente;
 import modelo.Pedido;
@@ -27,11 +29,11 @@ public class AplicacaoConsole {
 			c = Fachada.cadastrarCliente("137636897","Gabriel", "rua d"); 	
 			c = Fachada.cadastrarCliente("291583663","Camila", "rua e"); 	
 			
-			pe = Fachada.criarPedido("477506885","João"); 	
-			pe = Fachada.criarPedido("378442213","José"); 	
-			pe = Fachada.criarPedido("273100456","Marcos"); 	
-			pe = Fachada.criarPedido("137636897","João");
-			pex = Fachada.criarPedidoExpress("477506885","João", 10);  
+			pe = Fachada.criarPedido("477506885"); 	
+			pe = Fachada.criarPedido("378442213"); 	
+			pe = Fachada.criarPedido("273100456"); 	
+			pe = Fachada.criarPedido("137636897");
+			pex = Fachada.criarPedidoExpress("477506885", 10);  
 
 	        //ADICIONANDO PRODUTOS
 	        try {
@@ -137,7 +139,7 @@ public class AplicacaoConsole {
         //CONSULTAR ARRECADACAO
         try {
         	System.out.println("\n------------Consultando arrecadações do dia-----------------");
-			System.out.println("Valor Total: " + Fachada.consultarArrecadacao(01));		
+			System.out.println("Valor Total: " + Fachada.consultarArrecadacao(LocalDate.now().getDayOfMonth()));		
         }
         catch (Exception e){
         	System.out.println("==> "+ e.getMessage());

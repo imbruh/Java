@@ -47,10 +47,14 @@ public class TelaCancelarPedido extends JFrame{
 		JButton btnCancelar = new JButton("Cancelar Pedido");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try{
-					int idCanc = Integer.parseInt(id.getText());
-					Fachada.cancelarPedido(idCanc);
-					lblMensagem.setText("Pedido cancelado.");
+				try {
+                    int idPed=0; 
+                    try {
+                        idPed = Integer.parseInt(id.getText());
+                    }
+                    catch (Exception a) {
+                        lblMensagem.setText("id invalido!");
+                    }
 				}
 				catch (Exception erro){
 					lblMensagem.setText(erro.getMessage());

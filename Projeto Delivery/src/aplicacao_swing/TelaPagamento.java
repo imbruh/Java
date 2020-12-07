@@ -51,25 +51,38 @@ public class TelaPagamento extends JFrame{
 		getContentPane().add(entregador);
 		
 		JLabel lblMensagem = new JLabel("");
-		lblMensagem.setBounds(58, 149, 186, 32);
+		lblMensagem.setBounds(58, 149, 224, 41);
 		getContentPane().add(lblMensagem);
 		
 		JButton btnPagar = new JButton("Pagar");
 		btnPagar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					int idPag = Integer.parseInt(id.getText());
-					String entreg = entregador.getText();
-					
-					if (id.getText().isEmpty() || entregador.getText().isEmpty()) {
-						lblMensagem.setText("campo vazio");
-					}
-					Fachada.pagarPedido(idPag, entreg);
-					lblMensagem.setText("Pedido pago com sucesso!");
-				}
-				catch (Exception erro) {
-					lblMensagem.setText(erro.getMessage());
-				}
+                    int idPag=0; 
+                    try {
+                        idPag = Integer.parseInt(id.getText());
+                    }
+                    catch (Exception a) {
+                        lblMensagem.setText("id invalido");
+                    }
+                    String entreg = entregador.getText();
+                    if (id.getText().isEmpty() && entregador.getText().isEmpty()) {
+                        lblMensagem.setText("Preencha todos os campos.");
+                    }
+                    else if (id.getText().isEmpty()) {
+                        lblMensagem.setText("Preencha o campo id.");
+                    }
+                    else if (entregador.getText().isEmpty()){
+                        lblMensagem.setText("Preencha o campo entregador.");
+                    }
+                    else {
+                        Fachada.pagarPedido(idPag, entreg);
+                        lblMensagem.setText("Pedido pago com sucesso.");
+                    }
+                }
+                catch (Exception erro) {
+                    lblMensagem.setText(erro.getMessage());
+                }
 			}
 		});
 		btnPagar.setBounds(90, 115, 89, 23);

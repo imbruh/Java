@@ -69,24 +69,24 @@ public class Fachada {
 		return c;
 	}
 	
-	public static Pedido criarPedido(String telefone, String entregador) throws  Exception{
+	public static Pedido criarPedido(String telefone) throws  Exception{
 		Cliente c = repositorio.localizarCliente(telefone);
 		if (c==null) {
 			throw new Exception ("Cliente não cadastrado");
 		}
 		Pedido pe = repositorio.localizarPedido(telefone);
-		pe = new Pedido(c, entregador);
+		pe = new Pedido(c);
 		repositorio.adicionar(pe);
 		return pe;
 	}
 	
-	public static Pedido criarPedidoExpress(String telefone, String entregador, double taxa) throws  Exception{
+	public static Pedido criarPedidoExpress(String telefone, double taxa) throws  Exception{
 		Cliente c = repositorio.localizarCliente(telefone);
 		if (c==null) {
 			throw new Exception ("Cliente não cadastrado");
 		}
 		Pedido pex = repositorio.localizarPedido(telefone);
-		pex = new PedidoExpress(c, entregador, taxa);
+		pex = new PedidoExpress(c, taxa);
 		repositorio.adicionar(pex);
 		return pex;
 	}
@@ -97,7 +97,7 @@ public class Fachada {
 	public static void adicionarProdutoPedido(int idpedido, int idproduto) throws Exception {
         Pedido pedido = repositorio.localizarPedido(idpedido);
         if(pedido==null) {
-        	throw new Exception("Pedido " + idpedido + " inexistente");
+        	throw new Exception("Pedido inexistente");
         }     
         Produto produto = repositorio.localizarProduto(idproduto);
         ArrayList<Produto> prodPedido = pedido.getProdutos();
@@ -150,12 +150,13 @@ public class Fachada {
 		if(pedido==null) {
 			throw new Exception("Pedido não encontrado");
 		}
-		if(!entregador.equals(pedido.getEntregador())) {
-			throw new Exception("Entregador invalido");
-		}
-		if(pedido.isPago()) {
+		else if(pedido.isPago()) {
 			throw new Exception("Pedido ja foi pago!");
 		}	
+		else if(pedido.getValortotal()==0) {
+			throw new Exception("Nenhum produto adicionado");
+		}
+		pedido.setEntregador(entregador);
 		pedido.setPago(true);
 	}
 

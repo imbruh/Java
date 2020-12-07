@@ -57,8 +57,15 @@ public class TelaRemoverProduto extends JFrame{
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					int idPed = Integer.parseInt(idpedido.getText());
-					int idProd = Integer.parseInt(idproduto.getText());
+					int idPed=0; 
+					int idProd=0; 
+                    try {
+                        idPed = Integer.parseInt(idpedido.getText());
+                        idProd = Integer.parseInt(idproduto.getText());
+                    }
+                    catch (Exception a) {
+                        lblMensagem.setText("id invalido");
+                    }
 					Fachada.removerProdutoPedido(idPed, idProd);
 					lblMensagem.setText("Produto Removido!");
 				}

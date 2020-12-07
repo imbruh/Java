@@ -59,16 +59,16 @@ public class TelaCadastroPedido extends JFrame {
 		contentPane.setLayout(null);
 
 		telefone = new JTextField();
-		telefone.setBounds(123, 11, 86, 20);
+		telefone.setBounds(133, 43, 86, 20);
 		contentPane.add(telefone);
 		telefone.setColumns(10);
 
 		lblTelefone = new JLabel("Telefone");
-		lblTelefone.setBounds(55, 14, 52, 14);
+		lblTelefone.setBounds(56, 46, 52, 14);
 		contentPane.add(lblTelefone);
 
 		taxa = new JTextField();
-		taxa.setBounds(123, 54, 86, 20);
+		taxa.setBounds(133, 86, 86, 20);
 		contentPane.add(taxa);
 		taxa.setColumns(10);
 
@@ -76,31 +76,31 @@ public class TelaCadastroPedido extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					if(telefone.getText().isEmpty() || entregador.getText().isEmpty())
+					if(telefone.getText().isEmpty())
 						lblMensagem.setText("campo vazio");
 					else {
 						if(taxa.getText().isEmpty()) {
 							String fone = telefone.getText();
-							String entreg = entregador.getText();
+							//String entreg = entregador.getText();
 							
-							Pedido pe = Fachada.criarPedido(fone, entreg);
+							Pedido pe = Fachada.criarPedido(fone);
 	
 							lblMensagem.setText("Pedido criado! id = "+ pe.getId());
 							telefone.setText("");
 							taxa.setText("");
-							entregador.setText("");
+							//entregador.setText("");
 						}
 						else {
 							String fone = telefone.getText();
-							String entreg = entregador.getText();
+							//String entreg = entregador.getText();
 							double taxaExp = Double.parseDouble(taxa.getText());
 	
-							Pedido pex = Fachada.criarPedidoExpress(fone, entreg, taxaExp);
+							Pedido pex = Fachada.criarPedidoExpress(fone, taxaExp);
 	
 							lblMensagem.setText("Pedido criado! id = "+ pex.getId());
 							telefone.setText("");
 							taxa.setText("");
-							entregador.setText("");
+							//entregador.setText("");
 						}
 					}
 				}
@@ -125,25 +125,25 @@ public class TelaCadastroPedido extends JFrame {
 		btnCadastrar.setBounds(88, 136, 116, 23);
 		contentPane.add(btnCadastrar);
 
-		lblEntregador = new JLabel("Entregador");
+		/*lblEntregador = new JLabel("Entregador");
 		lblEntregador.setBounds(55, 98, 70, 14);
-		contentPane.add(lblEntregador);
+		contentPane.add(lblEntregador);*/
 		
 		JLabel lblTaxa = new JLabel("Taxa Express");
-		lblTaxa.setBounds(29, 57, 86, 14);
+		lblTaxa.setBounds(52, 89, 86, 14);
 		contentPane.add(lblTaxa);
 		
-		entregador = new JTextField();
+		/*entregador = new JTextField();
 		entregador.setColumns(10);
 		entregador.setBounds(123, 95, 86, 20);
-		contentPane.add(entregador);
+		contentPane.add(entregador);*/
 		
 		lblMensagem = new JLabel("");
 		lblMensagem.setBounds(91, 170, 143, 20);
 		contentPane.add(lblMensagem);
 		
 		JLabel lblOpcional = new JLabel("*Opcional");
-		lblOpcional.setBounds(219, 57, 74, 14);
+		lblOpcional.setBounds(229, 89, 74, 14);
 		contentPane.add(lblOpcional);
 		
 		
