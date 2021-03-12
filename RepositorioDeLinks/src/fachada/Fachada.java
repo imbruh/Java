@@ -133,9 +133,12 @@ public class Fachada {
 
     }
 	
-	public static void removerVisualizacao(int id) {  
+	public static void removerVisualizacao(int id) throws Exception {  
 		DAO.begin();
 		Visualizacao visu = daovisualizacao.read(id);
+		if(visu==null) {
+			throw new Exception("Visualização " + id + " inexistente" );
+		}
 		Usuario u = visu.getUsuario();
 		Video vid = visu.getVideo();
 		u.remover(visu);
