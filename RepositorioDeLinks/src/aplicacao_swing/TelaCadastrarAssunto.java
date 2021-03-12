@@ -74,12 +74,12 @@ public class TelaCadastrarAssunto {
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					String palavra= textField.getText();
-					Fachada.cadastrarAssunto(palavra);
+					String palavra= textField.getText();				
 					if(palavra.isEmpty()) {
 						label_2.setText("preencha o campo vazio");
 					}
 					else {
+						Fachada.cadastrarAssunto(palavra);
 						textField.setText("");
 						label_2.setText("cadastro realizado");
 					}				
